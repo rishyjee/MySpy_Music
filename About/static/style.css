@@ -1,0 +1,17 @@
+li a {
+    font-size: 25px;
+    color: Rose;
+}
+
+body{
+    background: white url("images/19.png")
+
+}
+
+.navbar{
+    border-radius:0;
+}
+
+.navbar-brand{
+    font-family:'Satisfy',cursive;
+}
