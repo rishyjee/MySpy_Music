@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://www.nehakakkar.com/testimonials/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<!-- 
+			This carousel example is created with jQuery and the carouFredSel-plugin.
+			http://jquery.com
+			http://caroufredsel.frebsite.nl
+		-->
+
+		
+		<meta name="description" value="This carousel uses a differt, random transition effect for each slide by using the onAfter-callback function to choose one of the available effects and trigger the configuration-custom event to set it.">
+		<meta name="keywords" value="effect, rondom, carousel, fade, scroll, cover, uncover, transition, jquery">
+		<title>Carousel using a random transition effect for each slide</title>
+
+		<script src="./jquery-1.5.min.js.download" type="text/javascript"></script>
+		<script src="./jquery.carouFredSel-5.5.0.js.download" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.carousel').carouFredSel({
+					items: 1,
+					scroll: {
+						onAfter: function() {
+							setRandomFX( $(this) );
+							}
+					},
+					onCreate: function() {
+						setRandomFX( $(this) );
+					}
+				});
+			});
+			var allFXs = [ 'scroll', 'crossfade', 'cover', 'uncover' ];
+			function setRandomFX( $elem ) {
+				var newFX = Math.floor( Math.random() * allFXs.length );
+				$elem.trigger( 'configuration', {
+					auto: {
+						//fx: allFXs[ newFX ]
+						fx: 'crossfade'
+					}
+				});
+			}
+		</script>
+		<style type="text/css">
+			html, body {
+				height: 100%;
+				padding: 0;
+				margin: 0;
+			}
+			body {
+				min-height: 100px;
+				min-width: 850px;
+			
+			}
+			
+			#wrapper {
+				width: 850px;
+				height: 236px;
+				margin: 0px 0 0 0px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				overflow: hidden;
+				
+			}
+			.carousel img {
+				display: block;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="caroufredsel_wrapper" style="text-align: start; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; width: 0px; height: 0px; margin: 0px; overflow: hidden;"><div class="carousel" style="text-align: left; float: none; position: absolute; top: 0px; left: 0px; margin: 0px; width: 0px; height: 0px;">
+				<img src="./1.png">
+				<img src="./4.png">
+				
+					
+			</div></div>
+		</div>
+	
+</body></html>

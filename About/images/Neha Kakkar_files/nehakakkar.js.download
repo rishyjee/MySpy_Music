@@ -1,0 +1,187 @@
+// nehakakkar.js
+
+$(document).ready(function(){
+	
+	$(window).on('load', function(){
+		$("#loading").fadeOut( 1000 );						  
+	});
+	
+	
+	if( $("#skrollr-body").length > 0 )
+	{
+		$(window).on('load', function(){
+			var s = skrollr.init({forceHeight: false});
+			
+			if( $("body.homebody").length > 0 )
+			{
+				$("header").addClass('animated');
+			}
+		});
+	}//.skrollbodycheck
+	
+	
+	if( $(".group1").length > 0 )
+	{
+		$(".group1").colorbox({rel: 'group1', maxWidth: '95%', maxHeight: '95%'});
+	}//colorbox check
+	
+	
+	
+	if( $(".musicboxes .sidebars").length > 0 )
+	{
+		$("a.prev").bind('click', function(e){ 
+										   		e.preventDefault();
+												var boxId = $(this).parent().parent().parent().attr('id');
+												sidebarPrev( boxId );
+											});
+		$("a.next").bind('click', function(e){ 
+										   		e.preventDefault();
+												var boxId = $(this).parent().parent().parent().attr('id');
+												sidebarNext( boxId );
+											});
+	}//.musicboxes .sidebars check
+	
+	
+	
+	if( $("body.audiobody").length > 0 )
+	{
+		audio = document.getElementById('player');
+		extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+		
+		
+		$(".playpause").click(function(){
+			
+			var boxId = $(this).parent().parent().parent().parent().parent().attr('id');
+			
+			var path;
+			
+			
+			
+			if( boxId == 'music1' )
+				path = 'audio/films/';
+			else if( boxId == 'music2' )
+				path = 'audio/non-films/';
+			else
+				path = 'audio/regional/';
+				
+				
+			
+			var newTrack = $(this).attr('data-track');
+			
+			if( $(this).parent().hasClass('playing') )
+			{
+				$(this).parent().removeClass('playing');
+				audio.pause();
+			}
+			else
+			{
+				$("li.playing").removeClass('playing');
+				var currentLi = $(this).parent();
+				currentLi.toggleClass('playing');
+				var fullpath = path + newTrack + extension;
+				audio.src = '';
+				audio.src = fullpath;
+				audio.play();
+				
+			}
+			
+		});//playpause handler
+		
+		
+		
+		
+		
+		$(".sidebars li img").click(function(){
+			var curAlbum = $(this).attr('title');
+			var boxId = $(this).parent().parent().parent().parent().parent().parent().attr('id');
+			
+			$("#"+boxId+" .tracks li").each(function(){
+				if( $(this).attr('data-album') == curAlbum )
+				{
+					$(this).removeClass('dim');
+				}
+				else
+				{
+					$(this).addClass('dim');
+				}
+			});
+		});
+		
+	}//audiobody check
+	
+	
+	if( $("#popup").length > 0  )
+	{
+		$("#popup .close").click(function(){
+			$("#popup").hide( 600 );							  
+		});
+	}//popup check
+	
+	
+	
+	if( $("#scontainer").length > 0 )
+	{
+		$(window).on('load', function(){
+			
+			var container = document.querySelector("#container");
+			var msnry = new Masonry( container, {
+									columnWidth: 100,
+									gutter: 10
+								});						  
+		});
+	}//container check
+	
+	
+	
+	$("#feedbackcontainer h2").click(function(){
+		$("#feedbackcontainer").toggleClass('behind');
+	});
+	
+	
+	$("#feedbackform").submit(function(e){
+		e.preventDefault();
+		
+		$("#processing").fadeIn(300);
+			
+		var name = $("#name").val();
+		var email = $("#email").val();
+			
+		var phone = $("#phone").val();
+		var feedback = $("#feedback").val();
+		
+		$.get( 'feedback.php', {'email': email, 'name': name, 'phone': phone, 'feedback': feedback }, function(data){
+														$("#processing").fadeOut( 300 );
+														$("#response").attr('class', '').addClass(data.class).text(data.message);
+														$(this).trigger('reset');
+														$("input[type=text], input[type=email], textarea").val("");
+														}, 'json');
+		
+	});//feedbackform submission
+	
+	
+});//document ready check
+
+
+
+
+function sidebarNext( boxId )
+{
+	var curTop = $("#"+boxId+" .viewport ul").css('top').replace('px', '');
+	var numPosters = $("#"+boxId+" .viewport li").length;
+	var minTop = ( numPosters < 4 ) ? 0 : ( (3-numPosters) * 210 );
+	
+	if( curTop > minTop )
+	{
+		$("#"+boxId+" .viewport ul").animate({'top': '-=210px'}, 600 );
+	}
+}//sidebarNext function
+
+function sidebarPrev( boxId )
+{
+	var curTop = $("#"+boxId+" .viewport ul").css('top').replace('px', '');
+	
+	if( curTop < 0 )
+	{
+		$("#"+boxId+" .viewport ul").animate({'top': '+=210px'}, 600 );
+	}
+}//sidebarPrev function

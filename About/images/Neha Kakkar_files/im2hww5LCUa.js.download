@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["MXPfg"]); }
+
+__d("ClickableArea.react",["Focus","React","ReactDOM"],(function a(b,c,d,e,f,g){__p&&__p();var h,i;h=babelHelpers.inherits(j,c("React").Component);i=h&&h.prototype;j.prototype.componentDidMount=function(){"use strict";if(this.props.buttonRef){var k=this.props.buttonRef();c("Focus").relocate(c("ReactDOM").findDOMNode(k),c("ReactDOM").findDOMNode(this))}};j.prototype.render=function(){"use strict";var k=this.props,l=k.children,m=k.onClick,n=babelHelpers.objectWithoutProperties(k,["children","onClick"]);return c("React").cloneElement(c("React").Children.only(l),babelHelpers["extends"]({},n,{onClick:m}))};function j(){"use strict";h.apply(this,arguments)}f.exports=j}),null);

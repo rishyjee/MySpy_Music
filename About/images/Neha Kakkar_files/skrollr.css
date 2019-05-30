@@ -1,0 +1,86 @@
+#testimonials
+{
+	-skrollr-animation-name: testimonials;
+}
+
+#albums li
+{
+	-skrollr-animation-name: albums;	
+}
+
+.bgdivs
+{
+	-skrollr-animation-name: bgdivs;	
+}
+
+#videos iframe
+{
+	-skrollr-animation-name: videos;
+}
+
+#gallery>img
+{
+	-skrollr-animation-name: gallery;
+}
+
+#fbfeeds iframe
+{
+	-skrollr-animation-name: fbfeeds;
+}
+
+#down
+{
+	-skrollr-animation-name: downarrow;
+}
+
+
+@-skrollr-keyframes testimonials
+{
+	bottom-top { transform: translateY( 300px ); }
+	center-center { transform: translateY( 0px ); }
+}
+
+@-skrollr-keyframes albums
+{
+	bottom-top { opacity: 0; transform: scale( 0.2 );}
+	bottom-bottom { opacity: 1; transform: scale( 1 );}
+}
+
+@-skrollr-keyframes bgdivs
+{
+	bottom-top { opacity: 0;}
+	top-top { opacity: 0;}
+	bottom-center { opacity: 1;}
+	bottom-bottom { opacity: 0;}
+}
+
+@-skrollr-keyframes videos
+{
+	bottom-top { transform: translateY( 150% ); }
+	bottom-bottom { transform: translateY( 0% ); }
+}
+
+@-skrollr-keyframes gallery
+{
+	bottom-top { transform: translateY( 150% ); }
+	bottom-bottom { transform: translateY( 0% ); }
+}
+
+@-skrollr-keyframes fbfeeds
+{
+	bottom-top { transform: translateY( 150% ); }
+	bottom-bottom { transform: translateY( 0% ); }
+}
+
+
+@-skrollr-keyframes musicsections
+{
+	bottom-top { transform: translateY( 150% ); }
+	bottom-bottom { transform: translateY( 0% ); }
+}
+
+@-skrollr-keyframes downarrow
+{
+	0{ opacity: 1; }
+	400{ opacity: 0;}
+}

@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["FJdxL"]); }
+
+__d("Selector.react",["AbstractSelector.react","PopoverButton.react","React","ReactMenu"],(function a(b,c,d,e,f,g){__p&&__p();var h,i,j=c("ReactMenu").SelectableMenu,k=c("ReactMenu").SelectableItem;h=babelHelpers.inherits(l,c("React").Component);i=h&&h.prototype;l.prototype.render=function(){"use strict";var m={button:c("React").createElement(c("PopoverButton.react"),{rel:"toggle",suppressed:this.props.suppressed}),menu:c("React").createElement(j,null)};return c("React").createElement(c("AbstractSelector.react"),babelHelpers["extends"]({},this.props,{overlappingborder:true,config:m}),this.props.children)};function l(){"use strict";h.apply(this,arguments)}l.Option=k;f.exports=l}),null);
